@@ -1,0 +1,22 @@
+{
+  "name": "autonomomineria",
+  "version": "1.0.0",
+  "description": "Sistema de valoración de vehículos usados con Machine Learning",
+  "scripts": {
+    "install:all": "cd frontend-web && npm install",
+    "install:backend": "cd backend && pip install -r requirements.txt",
+    "dev:frontend": "cd frontend-web && npm run dev",
+    "dev:backend": "cd backend && entorno\\Scripts\\python.exe app.py",
+    "dev": "start cmd /k \"npm run dev:backend\" && timeout /t 3 && npm run dev:frontend",
+    "build:frontend": "cd frontend-web && npm run build",
+    "preview": "cd frontend-web && npm run preview"
+  },
+  "keywords": [
+    "machine-learning",
+    "car-valuation",
+    "flask",
+    "vue"
+  ],
+  "author": "",
+  "license": "MIT"
+}
