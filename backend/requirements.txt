@@ -1,7 +1,14 @@
+# Flask y extensiones
 Flask>=3.0.0
 flask-cors>=4.0.0
+gunicorn>=21.0.0
+
+# Data Science
 pandas>=2.2.0
 numpy>=1.26.0
 scikit-learn>=1.4.0
+
+# Visualización (opcional)
 matplotlib>=3.8.0
 seaborn>=0.13.0
+
