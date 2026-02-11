@@ -23,14 +23,8 @@ wheels/
 .installed.cfg
 *.egg
 
-# Modelos entrenados
-models/*.pkl
-models/*.h5
 
-# Datos
-data/*.csv
-data/*.xlsx
-!data/README.md
+
 
 # IDE
 .vscode/

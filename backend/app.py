@@ -197,20 +197,24 @@ if __name__ == '__main__':
     os.makedirs('data', exist_ok=True)
     os.makedirs('models', exist_ok=True)
 
-    # Entrenar el modelo automáticamente si existe un archivo de datos
-    data_file = 'data/car_prediction_data.csv'
-    if os.path.exists(data_file):
-        print("Entrenando modelo con datos existentes...")
-        try:
-            metrics = predictor.train_model(data_file)
-            print(
-                f"Modelo entrenado exitosamente. R² Score: {metrics['r2_score']:.4f}")
-        except Exception as e:
-            print(
-                f"Advertencia: No se pudo entrenar el modelo automáticamente: {e}")
+    # Solo entrenar si NO hay modelo cargado previamente
+    if predictor.is_trained():
+        print("✓ Modelo cargado desde archivos .pkl existentes")
     else:
-        print(f"Advertencia: No se encontró el archivo {data_file}")
-        print("El modelo se entrenará cuando se proporcionen datos.")
+        # Entrenar el modelo automáticamente si existe un archivo de datos
+        data_file = 'data/car_prediction_data.csv'
+        if os.path.exists(data_file):
+            print("No se encontró modelo guardado. Entrenando con datos existentes...")
+            try:
+                metrics = predictor.train_model(data_file)
+                print(
+                    f"Modelo entrenado exitosamente. R² Score: {metrics['r2_score']:.4f}")
+            except Exception as e:
+                print(
+                    f"Advertencia: No se pudo entrenar el modelo automáticamente: {e}")
+        else:
+            print(f"Advertencia: No se encontró el archivo {data_file}")
+            print("El modelo se entrenará cuando se proporcionen datos.")
 
     print("\n🚀 Servidor backend iniciado en http://localhost:5000")
     print("📊 Endpoints disponibles:")
