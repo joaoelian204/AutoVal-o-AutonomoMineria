@@ -1,12 +1,9 @@
 // Configuración del API Backend
-// En producción (Docker), las peticiones van al mismo origen y nginx las redirige
-// En desarrollo, apuntan a localhost:5000
-const isProduction = import.meta.env.PROD;
+// Las URLs se configuran en archivos .env.development y .env.production
+// Vite carga automáticamente el archivo correcto según el modo
 
 export const API_CONFIG = {
-  BASE_URL: isProduction
-    ? ""
-    : import.meta.env.VITE_API_BASE_URL || "http://localhost:5000",
+  BASE_URL: import.meta.env.VITE_API_BASE_URL,
   ENDPOINTS: {
     HEALTH: "/api/health",
     PREDICT: "/api/predict",
